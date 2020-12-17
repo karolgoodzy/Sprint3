@@ -1,53 +1,61 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import yagmail
+import utils
 app = Flask(__name__)
 
 @app.route('/')
 def inicio():
-    return render_template("index.html")
+    return render_template('index.html')
 
 @app.route('/registro/')
 def registro():
     return render_template('registro.html')
 
-@app.route('/busquedaImagenes/')
+@app.route('/busquedaimagenes/')
 def busqueda():
-    return render_template("busquedaImagenes.html")
+    return render_template('busquedaImagenes.html')
 
-@app.route('/sesion/')
-def sesion():
-    return render_template("sesion.html")
+@app.route('/sesion/', methods=['GET', 'POST'])
+def sesion():    
+    #try:
+      if request.method == 'POST':
+         usuario = request.form['usuario']
+         clave = request.form['contraseña']
+         email = request.form['correo']
+         if utils.isEmailValid(email):         
+            if utils.isUsernameValid(usuario):            
+               yag = yagmail.SMTP('penarandah@uninorte.edu.co','TuClavePersonal')
+               yag.send(to=email,subject='Validar cuenta',
+               contents='Revisa tur correo para activar tu cuenta.') 
+               return "Correo enviado a:  " + email
+            else:
+               return "Usuario no valido.  " + usuario
+         else:
+            return "Correo no valido.  " + usuario
+      else:         
+          return 'Entra con GET'
+    #except: 
+       #return render_template('sesion.html')
 
 @app.route('/gestorimagen/')
 def gestor():
-    return render_template("gestorImagen.html")
+    return render_template('gestorImagen.html')
 
 
-@app.route('/sesion/recuperarcontrasena')
+@app.route('/sesion/recuperarcontrasena/')
 def recuperar():
-    return render_template("recuperarcontrasena.html")
+    return render_template('recuperarcontrasena.html')
 
 
-@app.route('/busquedaImagenes/gestorImagen')
-def gestor1():
-    return render_template("gestorimagen.html")
-
-@app.route('/busquedaImagenes/busquedaImagenes/')
-def busqueda1():
-    return render_template("busquedaImagenes.html")
-
-@app.route('/gestorImagen/crearActualizar')
+@app.route('/gestorimagen/crearactualizar/')
 def actualizar():
-    return render_template("crearActualizar.html")
+    return render_template('crearActualizar.html')
 
-@app.route('/gestorImagen/eliminar')
+@app.route('/gestorimagen/eliminar/')
 def eliminar():
-    return render_template("eliminar.html")
+    return render_template('eliminar.html')
 
-@app.route('/gestorImagen/descargar')
+@app.route('/gestorimagen/descargar/')
 def descargar():
-    return render_template("descargar.html")
-
-@app.route('/gestorImagen/busquedaImagenes')
-def busqueda2():
-    return render_template("busquedaImagenes.html")
+    return render_template('descargar.html')
 

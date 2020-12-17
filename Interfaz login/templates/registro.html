@@ -11,7 +11,7 @@
     <center>
         <h1 class="titulo">Registrar Usuario</h1>
         <div id="display"><br>
-            <form action="" method="POST" onsubmit="return autenticarInformacion();">
+            <form action="/" method="POST" onsubmit="return autenticarInformacion();">
                 <img src="{{ url_for('static', filename='images/usuario.png') }}" alt="Usuario" height="150" witdh="150"><br><br>
                 <table border="0">
                     <tr>
@@ -46,7 +46,7 @@
                     </tr>
                 </table><br>
                 <input type="submit" class="boton" name="registrar" value="registar"/>
-                <a href="index.html"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
+                <a href="http://127.0.0.1:5000/"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
             </form><br>
         </div>
     </center>
