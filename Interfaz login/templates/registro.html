@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Usuario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
+    <script src="{{ url_for('static', filename='js/autenticar.js') }}}"></script>
+</head>
+<body>
+    <center>
+        <h1 class="titulo">Registrar Usuario</h1>
+        <div id="display"><br>
+            <form action="" method="POST" onsubmit="return autenticarInformacion();">
+                <img src="{{ url_for('static', filename='images/usuario.png') }}" alt="Usuario" height="150" witdh="150"><br><br>
+                <table border="0">
+                    <tr>
+                        <td>Nombre: </td>
+                        <td><input type="ext" name="nombre" id="nombre" placeholder="Ingresa tu Nombre"/><br></td>
+                    </tr>
+                    <tr>
+                        <td>Apellidos:</td>
+                        <td><input type="text" name="apellido" id="apellido" placeholder="Ingresa tus Apellidos"/></td>
+                    </tr>
+                    <tr>
+                        <td>Correo Electrónico:</td>
+                        <td><input type="email" name="correo" id="correo" placeholder="Correo Electrónico"/></td>
+                    </tr>
+                    <tr>
+                        <td>Nombre de Usuario:</td>
+                        <td><input type="text" name="usuario" id="usuario" placeholder="Nickname o Usuario"/></td>
+                    </tr>
+                    <tr>
+                        <td>Contraseña:</td>
+                        <td><input type="password" name="contraseña"  id="clave" placeholder="contraseña"/>
+                            <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20" 
+                            onmouseover="mostrarPassword();"
+                            onmouseout="ocultarPassword();"></td>
+                    </tr>
+                    <tr>
+                        <td>Confirmar Contraseña:</td>
+                        <td><input type="password" name="contraseña2" id="confirmar" placeholder="contraseña"/>
+                            <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito2" width="20"  
+                            onmouseover="mostrarPassword2();"
+                            onmouseout="ocultarPassword2();"></td>
+                    </tr>
+                </table><br>
+                <input type="submit" class="boton" name="registrar" value="registar"/>
+                <a href="index.html"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
+            </form><br>
+        </div>
+    </center>
+</body>
+</html>
