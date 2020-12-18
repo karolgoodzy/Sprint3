@@ -6,12 +6,13 @@
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
     <script src="{{ url_for('static', filename='js/autenticarInicio.js') }}}"></script>
+<!-- -->
 </head>
 <body>
     <center>
         <h1 class="titulo">Iniciar Sesión</h1>
         <div id="display"><br>
-            <form action="" method="POST" onsubmit="return autenticarInicio();">
+            <form action="" method="GET" onsubmit="return autenticarInicio();">
                 <img src="{{ url_for('static', filename='images/Login.png') }}" alt="Usuario" height="150" witdh="150"><br><br>
                 <table border="0">
                     <tr>
@@ -26,12 +27,12 @@
                         <td>Contraseña:</td>
                         <td><input type="password" name="usuario" id="clave" placeholder="contraseña"/></td>
                     </tr>
-                    <tr> 
-                        <td><br><a href="recuperarcontrasena.html">¿Olvidaste la Contraseña?</a></td>
+                    <tr>
+                        <td><br><a href="recuperarcontrasena">¿Olvidaste la Contraseña?</a></td>
                     </tr>
-                    <tr> 
-                        <td><br><input type="submit" class="boton" name="iniciar" value="Iniciar"/></td>       
-                        <td><br><a href="index.html"><input type="" class="boton" name="cancelar" value="cancelar"/></a></td>
+                    <tr>
+                        <td><br><input type="submit" class="boton" name="iniciar" value="Iniciar"/></td>
+                        <td><br><a href="http://127.0.0.1:5000/"><input type="" class="boton" name="cancelar" value="cancelar"/></a></td>
                     </tr>
                 </table>
             </form><br>

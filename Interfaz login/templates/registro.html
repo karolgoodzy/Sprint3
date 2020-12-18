@@ -11,7 +11,7 @@
     <center>
         <h1 class="titulo">Registrar Usuario</h1>
         <div id="display"><br>
-            <form action="/" method="POST" onsubmit="return autenticarInformacion();">
+            <form action="/" method="GET" onsubmit="return autenticarInformacion();">
                 <img src="{{ url_for('static', filename='images/usuario.png') }}" alt="Usuario" height="150" witdh="150"><br><br>
                 <table border="0">
                     <tr>
@@ -33,20 +33,20 @@
                     <tr>
                         <td>Contraseña:</td>
                         <td><input type="password" name="contraseña"  id="clave" placeholder="contraseña"/>
-                            <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20" 
+                            <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20"
                             onmouseover="mostrarPassword();"
                             onmouseout="ocultarPassword();"></td>
                     </tr>
                     <tr>
                         <td>Confirmar Contraseña:</td>
                         <td><input type="password" name="contraseña2" id="confirmar" placeholder="contraseña"/>
-                            <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito2" width="20"  
+                            <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito2" width="20"
                             onmouseover="mostrarPassword2();"
                             onmouseout="ocultarPassword2();"></td>
                     </tr>
                 </table><br>
-                <input type="submit" class="boton" name="registrar" value="registar"/>
-                <a href="http://127.0.0.1:5000/"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
+                <input type="submit" class="boton" name="registrar" value="Registrar"/>
+                <a href="http://127.0.0.1:5000/"><input type="" class="boton" name="cancelar" value="Cancelar"/></a>
             </form><br>
         </div>
     </center>

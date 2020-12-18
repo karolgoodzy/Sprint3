@@ -11,16 +11,16 @@
     <center>
         <h1 class="titulo">Crear o Actualizar Imágenes</h1>
         <div id="display">
-            <form action="" method="POST" onsubmit="return actualizarCrear();">
+            <form action="" method="GET" onsubmit="return actualizarCrear();">
                 <table border="0">
                     <tr>
-                        <th><img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="Usuario" height="90" witdh="90"></th> 
+                        <th><img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="Usuario" height="90" witdh="90"></th>
                         <th><img src="{{ url_for('static', filename='images/crear.png') }}" alt="Usuario" height="90" witdh="90"></th>
-                    </tr> 
+                    </tr>
                     <tr>
-                        <th>Actualizar: 
+                        <th>Actualizar:
                         <input type="radio" name="seleccion" id="Actualizar" /><br></th>
-                        <th>Crear: 
+                        <th>Crear:
                         <input type="radio" name="seleccion" id="Crear" /><br></th>
                     </tr>
                     <tr><br>
@@ -40,14 +40,14 @@
                         <td><input type="password" name="contraseña" id="clave" placeholder="contraseña"/></td>
                     </tr>
                     <tr>
-                        <td>Pública: 
+                        <td>Pública:
                         <input type="radio" name="seleccion1" id="Publica" /><br></td>
-                        <td>Privada: 
+                        <td>Privada:
                         <input type="radio" name="seleccion1" id="Privada" /><br></td>
                     </tr>
                 </table><br>
                 <input type="file" name="archivo" id="seleccionar"><br><br>
-                <input type="submit" class="boton" name="iniciar" value="Aceptar"/>                
+                <input type="submit" class="boton" name="iniciar" value="Aceptar"/>
                 <a href="gestorImagen.html"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
             </form><br>
         </div>

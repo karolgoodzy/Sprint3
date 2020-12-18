@@ -25,20 +25,20 @@
                     <tr>
                         <td>Nueva Contraseña: </td>
                         <td><input type="password" name="nuevaClave" id="nuevaClave" placeholder="Nueva clave"/>
-                            <img src="{{ url_for('static', filename='images/show_pwd.png') }}" alt="Ojito" width="20"  
+                            <img src="{{ url_for('static', filename='images/show_pwd.png') }}" alt="Ojito" width="20"
                             onmouseover="mostrarPassword();"
-                            onmouseout="ocultarPassword();"></td>            
+                            onmouseout="ocultarPassword();"></td>
                     </tr>
                     <tr>
                         <td>Confirme Contraseña:</td>
                         <td><input type="password" name="confirme" id="confirme" placeholder="Confirme la contraseña"/>
-                            <img src="{{ url_for('static', filename='images/show_pwd.png') }}" alt="Ojito2" width="20"  
+                            <img src="{{ url_for('static', filename='images/show_pwd.png') }}" alt="Ojito2" width="20"
                             onmouseover="mostrarPassword2();"
                             onmouseout="ocultarPassword2();"></td>
                     </tr>
                 </table><br>
                 <input type="submit" class="boton" name="iniciar" value="Aceptar"/>
-                <a href="sesion.html"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
+                <a href="http://127.0.0.1:5000/sesion/"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
             </form><br>
         </div>
     </center>
