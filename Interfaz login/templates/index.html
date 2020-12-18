@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
+</head>
+<body>
+    <center>
+        <h1 class="titulo">Red Social de Imágenes</h1>
+        <a href="sesion.html"><input type="submit" class="boton" name="ventanaIniciar" value="Iniciar Sesión"/></a>
+        <a href="http://127.0.0.1:5000/registro/"><input type="submit" class="boton" name="ventanaRegistar" value="Registrar Usuario"/></a>
+        <a href="gestorImagen.html"><input type="submit" class="boton" name="ventanaRegistar" value="Gestor de Imágenes"/></a>
+        <a href="busquedaImagenes.html"><input type="submit" class="boton" name="ventanaRegistar" value="Buscar Imágenes"/></a>
+        <br><br><br>
+        <img src="{{ url_for('static', filename='images/images 1.jpg') }}" alt="Usuario" height="100" witdh="140">
+        <img src="{{ url_for('static', filename='images/images 2.jpg') }}" alt="Usuario" height="100" witdh="140">
+        <img src="{{ url_for('static', filename='images/images 3.jpg') }}" alt="Usuario" height="100" witdh="140">
+        <img src="{{ url_for('static', filename='images/images 4.jpg') }}" alt="Usuario" height="100" witdh="140">
+    </center>
+</body>
+</html>
