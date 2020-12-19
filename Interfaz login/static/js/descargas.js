@@ -11,19 +11,7 @@ function descargarImagen(){
             document.getElementById("nameImage").focus();
             return false;
         } 
-        
-        if ((usuario == "") || (usuario.length < 8)){
-            alert("El usuario debe tener mínimo 8 caracteres.");
-            document.getElementById("usuario").focus();
-            return false;
-        }
-            
-        if ((clave == "") || (clave.length < 8)){
-            alert("La clave debe tener mínimo 8 caracteres.");
-            document.getElementById("clave").focus();
-            return false;
-        }
-                
+                               
         return true;
         }
        
