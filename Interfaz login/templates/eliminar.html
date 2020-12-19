@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Eliminar Imágenes </title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
-    <script src="{{ url_for('static', filename='js/eliminar.js') }}}"></script>
+    <script src="{{ url_for('static', filename='js/eliminar.js') }}"></script>
 </head>
 <body>
     <center>
@@ -22,14 +22,7 @@
                         <td>Nombre Imagen: </td>
                         <td><input type="text" name="nameImage" id="nameImage" placeholder="Nombre de la Imagen"/><br></td>
                     </tr>
-                    <tr>
-                        <td>Usuario:</td>
-                        <td><input type="text" name="usuario" id="usuario" placeholder="usuario"/></td>
-                    </tr>
-                    <tr>
-                        <td>Contraseña:</td>
-                        <td><input type="password" name="contraseña" id="clave" placeholder="contraseña"/></td>
-                    </tr>
+                    
                 </table><br>
                 <input type="submit" class="boton" name="iniciar" value="Aceptar"/>
                 <a href="/gestorimagen/"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
