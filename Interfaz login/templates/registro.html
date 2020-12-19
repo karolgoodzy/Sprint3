@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Usuario</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
-    <script src="{{ url_for('static', filename='js/autenticar.js') }}"></script>
-</head>
-<body>
+{% extends "plantilla.html" %}
+{% block contenido %}
+<div id="fondo">
     <center>
         <h1 class="titulo">Registrar Usuario</h1>
         <div id="display"><br>
@@ -46,9 +39,9 @@
                     </tr>
                 </table><br>
                 <a href="/sesion/"></a><input type="submit" class="boton" name="registrar" value="Registrar"/>
-                <a href="http://127.0.0.1:5000/"><input type="" class="boton" name="cancelar" value="Cancelar"/></a>
+                <a href="/"><input type="" class="boton" name="cancelar" value="Cancelar"/></a>
             </form><br>
         </div>
     </center>
-</body>
-</html>
+</div>
+{% endblock %}

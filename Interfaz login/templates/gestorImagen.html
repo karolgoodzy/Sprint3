@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor de Imágenes</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
-</head>
-<body>
+{% extends "plantilla.html" %}
+{% block contenido %}
+<div id="fondo">
     <center>
         <h1 class="titulo">Gestor de Imágenes</h1>
         <table><br>
@@ -22,9 +16,9 @@
                 <td><br><a href="actualizar"><input type="submit" class="boton" name="Actualizar" value="Actualizar Imagen"/></a></td>
                 <td><br><a href="eliminar"><input type="submit" class="boton" name="eliminar" value="Eliminar Imagen"/></a></td>
                 <td><br><a href="descargar"><input type="submit" class="boton" name="descargar" value="descargar  Imágenes"/></a></td>
-                <td><br><a href="http://127.0.0.1:5000/busquedaimagenes"><input type="submit" class="boton" name="buscar" value="Buscar Imagen"/></a></td>
+                <td><br><a href="/busquedaimagenes/"><input type="submit" class="boton" name="buscar" value="Buscar Imagen"/></a></td>
             </tr>
         </table>
     </center>
-</body>
-</html>
+</div>
+{% endblock %}

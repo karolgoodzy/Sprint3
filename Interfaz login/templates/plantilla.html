@@ -1,0 +1,49 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% if titulo %}
+        <title>{{ titulo }}</title>
+        {% else %}
+        <title>Red Social de Imágenes</title>
+        {% endif %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
+        <script src="{{ url_for('static', filename='js/autenticarInicio.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/autenticar.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/eliminar.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/autenticarInicio.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/crear.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/actualizar.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/descargar.js') }}"></script>
+    </head>
+    <body link="#ff0000" alink="#ffffff" vlink="#4c2c96">
+        <div id="cabecera">. Blog: 
+            <a href="/">Home</a>
+            <a href="/sesion/">Iniciar Sesion</a>
+            <a href="/registro/">Registrar Usuario</a>
+        </div>
+        <hr>
+        {% with mensajes = get_flashed_messages() %}
+        {% if mensajes %}
+        <ul>
+            {% for mensaje in mensajes %}
+            <li>{{ mensaje }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block contenido %}
+        <!-- Contenido cargar (renderizar) -->
+        
+        {% endblock %}
+
+        <footer >
+            <div id="piedepagina">
+                <h5>© Todos los derechos reservados. Sitio desarrollado con el framework de Flask</h5>
+                <img src="{{ url_for('static', filename='images/facebook.png') }}" alt="facebook" height="20">
+                <img src="{{ url_for('static', filename='images/twitter.png') }}" alt="twitter" height="20">
+                <img src="{{ url_for('static', filename='images/instagram.png') }}" alt="instagram" height="20">
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
-    <script src="{{ url_for('static', filename='js/autenticarInicio.js') }}"></script>
-<!-- -->
-</head>
-<body>
+{% extends "plantilla.html" %}
+{% block contenido %}
+<div id="fondo">
     <center>
         <h1 class="titulo">Iniciar Sesión</h1>
         <div id="display"><br>
@@ -24,15 +16,15 @@
                         <td><input type="password" name="usuario" id="clave" placeholder="contraseña"/></td>
                     </tr>
                     <tr>
-                        <td><br><a href="recuperarcontrasena">¿Olvidaste la Contraseña?</a></td>
+                        <td><h5><a href="recuperarcontrasena">¿Olvidaste la Contraseña?</a></h5></td>
                     </tr>
                     <tr>
-                        <td><br><input type="submit" class="boton" name="iniciar" value="Iniciar"/></td>
-                        <td><br><a href="http://127.0.0.1:5000/"><input type="" class="boton" name="cancelar" value="cancelar"/></a></td>
+                        <td><input type="submit" class="boton" name="iniciar" value="Iniciar"/></td>
+                        <td><a href="/"><input type="" class="boton" name="cancelar" value="cancelar"/></a></td>
                     </tr>
                 </table>
             </form><br>
         </div>
     </center>
-</body>
-</html>
+</div>
+{% endblock %}

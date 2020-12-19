@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Eliminar Imágenes </title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
-    <script src="{{ url_for('static', filename='js/eliminar.js') }}"></script>
-</head>
-<body>
+{% extends "plantilla.html" %}
+{% block contenido %}
+<div id="fondo">
     <center>
         <h1 class="titulo">Eliminar Imágenes</h1>
         <div id="display"><br>
@@ -29,5 +22,5 @@
             </form><br>
         </div>
     </center>
-</body>
-</html>
+</div>
+{% endblock %}
