@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
-    <script src="{{ url_for('static', filename='js/autenticarInicio.js') }}}"></script>
+    <script src="{{ url_for('static', filename='js/autenticarInicio.js') }}"></script>
 <!-- -->
 </head>
 <body>
@@ -15,10 +15,6 @@
             <form action="" method="GET" onsubmit="return autenticarInicio();">
                 <img src="{{ url_for('static', filename='images/Login.png') }}" alt="Usuario" height="150" witdh="150"><br><br>
                 <table border="0">
-                    <tr>
-                        <td>Correo: </td>
-                        <td><input type="email" name="correo" id="correo" placeholder="Correo electronico"/></td>
-                    </tr>
                     <tr>
                         <td>Usuario:</td>
                         <td><input type="text" name="usuario" id="usuario" placeholder="usuario"/></td>

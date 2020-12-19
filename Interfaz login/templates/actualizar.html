@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Actualizar Imágenes </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
+    <script src="{{ url_for('static', filename='js/actualizar.js') }}"></script>
+</head>
+<body>
+    <center>
+        <h1 class="titulo">Actualizar Imágenes</h1>
+        <div id="display">
+            <form action="" method="GET" onsubmit="return actualizarImagen();">
+                <table border="0">
+                    <tr><br>
+                        <img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="Usuario" height="90" witdh="90">
+                        </tr>
+                    
+                    <tr>
+                        <td><br>Nombre Imagen: </td>
+                        <td><br><input type="text" name="nameImage" id="nameImage" placeholder="Nombre de la Imagen"/><br></td>
+                    </tr>
+                    <tr>
+                        <td>Nuevo Nombre: </td>
+                        <td><input type="text" name="newname" id="newname" placeholder="Nuevo nombre de la Imagen"/><br></td>
+                    </tr>
+                    <tr>
+                        <td>Pública:
+                        <input type="radio" name="seleccion1" id="Publica" /><br></td>
+                        <td>Privada:
+                        <input type="radio" name="seleccion1" id="Privada" /><br></td>
+                    </tr>
+                   
+                </table><br>
+                <input type="submit" class="boton" name="iniciar" value="Aceptar"/>
+                <a href="/gestorimagen/"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
+            </form><br>
+        </div>
+    </center>
+</body>
+</html>
