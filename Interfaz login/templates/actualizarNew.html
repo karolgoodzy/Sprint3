@@ -1,0 +1,27 @@
+{% extends "plantilla.html" %}
+{% block contenido %}
+<div id="fondo">
+    <center>
+        <h1 class="titulo">Actualizar Imágenes</h1>
+        <div id="display">
+            <img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="actualizar" height="90" witdh="90">
+            <form action="" method="POST" onsubmit="return actualizarImagen();">
+                {{ form.hidden_tag() }}
+                <p>
+                {{ form.nombreimagen2.label }}<br>
+                {{ form.nombreimagen2(size=30)}}<br>
+                </p>
+                <p>
+                {{ form.nuevonombre.label }}<br>
+                {{ form.nuevonombre(size=30)}}<br>
+                </p>
+                <p>{{ form.publica2() }} {{ form.publica2.label }}</p>
+                <p>{{ form.privada2() }} {{ form.privada2.label }}</p>
+                <p><input type="file" name="archivo" id="seleccionar"><br></p>
+                <p>{{ form.actualizar() }}</p>
+                <p><a href="/gestorimagennew/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
+            </form><br>
+        </div>
+    </center>
+</div>
+{% endblock %}

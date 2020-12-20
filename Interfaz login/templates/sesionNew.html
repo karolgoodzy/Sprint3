@@ -1,0 +1,26 @@
+{% extends "plantilla.html" %}
+{% block contenido %}
+<div id="fondo">
+    <center>
+        <h1 class="titulo">Iniciar Sesión</h1>
+        <div id="display"><br>
+            <img src="{{ url_for('static', filename='images/Login.png') }}" alt="Usuario" height="150" witdh="150"><br>
+            <form action="" method="POST" onsubmit="return autenticarInicio();" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                {{ form.usuario1.label }}<br>
+                {{ form.usuario1(size=30)}}<br>
+                </p>
+                <p>
+                {{ form.clave1.label }}<br>
+                {{ form.clave1(size=30) }}<br>
+                </p>
+                <p><a href="recuperar">¿Olvidaste la Contraseña?</a></p>
+                <p>{{ form.recordar1() }} {{ form.recordar1.label }}</p>
+                <p>{{ form.enviar1() }}</p>
+                <p><a href="/"><input type="" class="boton" name="regresar" value="regresar"/></a></p>
+            </form><br>
+        </div>
+    </center>
+</div>
+{% endblock %}

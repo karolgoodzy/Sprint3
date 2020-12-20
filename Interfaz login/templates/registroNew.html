@@ -1,0 +1,36 @@
+{% extends "plantilla.html" %}
+{% block contenido %}
+<div id="fondo">
+    <center>
+        <h1 class="titulo">Registrar Usuario</h1>
+        <div id="display"><br>
+            <img src="{{ url_for('static', filename='images/usuario.png') }}" alt="Usuario" height="150" witdh="150"><br>
+            <form action="" method="POST" onsubmit="return autenticarInformacion();" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                {{ form.nombre1.label }}<br>
+                {{ form.nombre1(size=30)}}<br>
+                </p>
+                <p>
+                {{ form.apellido1.label }}<br>
+                {{ form.apellido1(size=30)}}<br>
+                </p>
+                <p>
+                {{ form.correo1.label }}<br>
+                {{ form.correo1(size=30)}}<br>
+                </p>
+                <p>
+                {{ form.usuario2.label }}<br>
+                {{ form.usuario2(size=30)}}<br>
+                </p>
+                <p>
+                {{ form.clave2.label }}<br>
+                {{ form.clave2(size=30) }}<br>
+                </p>
+                <p>{{ form.registrar() }}</p>
+                <p><a href="/"><input type="" class="boton" name="regresar" value="regresar"/></a></p>
+            </form><br>
+        </div>
+    </center>
+</div>
+{% endblock %}
