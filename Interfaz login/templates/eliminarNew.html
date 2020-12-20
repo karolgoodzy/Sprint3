@@ -5,14 +5,15 @@
         <h1 class="titulo">Eliminar Imágenes</h1>
         <div id="display"><br>
             <img src="{{ url_for('static', filename='images/borrar.png') }}" alt="Eliminar" height="90" witdh="90">
-            <form action="" method="POST" onsubmit="return eliminarImagen();">
+            <form action="" method="POST" onsubmit="return eliminarImagen();" novalidate>
                 {{ form.hidden_tag() }}
-                <p>{{ form.confirmeliminar() }} {{ form.confirmeliminar.label }}</p>
+                <p>{{ form.checkborrar(onchange="habilitar()") }} {{ form.checkborrar.label }}</p>
                 <p>
-                {{ form.nombreimagen3.label }}<br>
-                {{ form.nombreimagen3(size=30)}}<br>
+                {{ form.nomImgElimnar.label }}<br>
+                {{ form.nomImgElimnar(size=30)}}<br>
                 </p>
                 <p>{{ form.eliminar() }}</p>
+                <script>habilitar()</script>
                 <p><a href="/gestorimagennew/"><input type="" class="boton" name="cancelar" value="Cancelar"/></a></p>
             </form><br>
         </div>

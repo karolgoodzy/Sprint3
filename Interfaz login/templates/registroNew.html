@@ -5,27 +5,35 @@
         <h1 class="titulo">Registrar Usuario</h1>
         <div id="display"><br>
             <img src="{{ url_for('static', filename='images/usuario.png') }}" alt="Usuario" height="150" witdh="150"><br>
-            <form action="" method="POST" onsubmit="return autenticarInformacion();" novalidate>
+            <form action="" method="POST" onsubmit="return verificar();" novalidate>
                 {{ form.hidden_tag() }}
                 <p>
-                {{ form.nombre1.label }}<br>
-                {{ form.nombre1(size=30)}}<br>
+                {{ form.nombres.label }}<br>
+                {{ form.nombres(size=30)}}<br>
                 </p>
                 <p>
-                {{ form.apellido1.label }}<br>
-                {{ form.apellido1(size=30)}}<br>
+                {{ form.apellidos.label }}<br>
+                {{ form.apellidos(size=30)}}<br>
                 </p>
                 <p>
-                {{ form.correo1.label }}<br>
-                {{ form.correo1(size=30)}}<br>
+                {{ form.correoRegistro.label }}<br>
+                {{ form.correoRegistro(size=30)}}<br>
                 </p>
                 <p>
-                {{ form.usuario2.label }}<br>
-                {{ form.usuario2(size=30)}}<br>
+                {{ form.usuarioRegistro.label }}<br>
+                {{ form.usuarioRegistro(size=30)}}<br>
                 </p>
                 <p>
-                {{ form.clave2.label }}<br>
-                {{ form.clave2(size=30) }}<br>
+                {{ form.claveRegistro.label }}<br>
+                {{ form.claveRegistro(size=30) }}
+                <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20"
+                            onmouseover="mostrarPassword1();" onmouseout="ocultarPassword1();"><br>
+                </p>
+                <p>
+                {{ form.confirme.label }}<br>
+                {{ form.confirme(size=30) }}
+                <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20"
+                            onmouseover="mostrarPassword2();" onmouseout="ocultarPassword2();"><br>
                 </p>
                 <p>{{ form.registrar() }}</p>
                 <p><a href="/"><input type="" class="boton" name="regresar" value="regresar"/></a></p>

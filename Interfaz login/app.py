@@ -102,7 +102,7 @@ def Home():
 def sesionnew():
     form = FormSesion()
     if(form.validate_on_submit()):
-        flash('Damos la bienvenida al usuario {}'.format(form.usuario1.data))
+        flash('Damos la bienvenida al usuario {}'.format(form.usuarioSesion.data))
         return redirect(url_for('gestornew'))
     return render_template('sesionnew.html', titulo='Iniciar Sesión', form=form)
 
@@ -110,7 +110,7 @@ def sesionnew():
 def registronew():
     form = FormRegistro()
     if(form.validate_on_submit()):
-        flash('Se ha registrado el usuario {}'.format(form.usuario2.data))
+        flash('Se ha registrado el usuario {}'.format(form.usuarioRegistro.data))
         return redirect(url_for('gracias'))
     return render_template('registroNew.html', titulo='Registrar Usuario', form=form)
 
@@ -118,7 +118,7 @@ def registronew():
 def recuperarnew():
     form = FormRecuperar()
     if(form.validate_on_submit()):
-        flash('Se ha enviado el enlace al correo {}'.format(form.correo2.data))
+        flash('Se ha enviado el enlace al correo {}'.format(form.correoRecuperar.data))
         return redirect(url_for('gracias'))
     return render_template('recuperarcontrasenaNew.html', titulo='Registrar Usuario', form=form)
 
@@ -130,7 +130,7 @@ def gestornew():
 def crearnew():
     form = FormCrear()
     if(form.validate_on_submit()):
-        flash('Se ha creado la imagen {}'.format(form.nombreimagen1.data))
+        flash('Se ha creado la imagen {}'.format(form.nomImgCrear.data))
         return redirect(url_for('gracias'))
     return render_template('crearNew.html', titulo='Crear Imagen', form=form)
 
@@ -138,7 +138,7 @@ def crearnew():
 def actualizarnew():
     form = FormActualizar()
     if(form.validate_on_submit()):
-        flash('Se ha actualizado la imagen {} a {}'.format(form.nombreimagen2.data, form.nuevonombre.data))
+        flash('Se ha actualizado la imagen {} a {}'.format(form.nomImgActlzar.data, form.nuevoNombre.data))
         return redirect(url_for('gracias'))
     return render_template('actualizarnew.html', titulo='Actualizar Imagen', form=form)
 
@@ -146,7 +146,7 @@ def actualizarnew():
 def eliminarnew():
     form = FormEliminar()
     if(form.validate_on_submit()):
-        flash('Se ha eliminado la imagen {}'.format(form.nombreimagen3.data))
+        flash('Se ha eliminado la imagen {}'.format(form.nomImgElimnar.data))
         return redirect(url_for('gracias'))
     return render_template('eliminarNew.html', titulo='Eliminar Imagen', form=form)
 
@@ -154,7 +154,7 @@ def eliminarnew():
 def descargarnew():
     form = FormDescargar()
     if(form.validate_on_submit()):
-        flash('Se ha descargado la imagen {}'.format(form.nombreimagen4.data))
+        flash('Se ha descargado la imagen {}'.format(form.nomImgDescgar.data))
         return redirect(url_for('gracias'))
     return render_template('descargarNew.html', titulo='Descargar Imagen', form=form)
 

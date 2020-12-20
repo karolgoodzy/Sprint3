@@ -8,12 +8,14 @@
             <form action="" method="POST" onsubmit="return crearImagen();" novalidate>
                 {{ form.hidden_tag() }}
                 <p>
-                {{ form.nombreimagen1.label }}<br>
-                {{ form.nombreimagen1(size=30)}}<br>
+                {{ form.nomImgCrear.label }}<br>
+                {{ form.nomImgCrear(size=30)}}<br>
                 </p>
-                <p>{{ form.publica1() }} {{ form.publica1.label }}</p>
-                <p>{{ form.privada1() }} {{ form.privada1.label }}</p>
                 <p><input type="file" name="archivo" id="seleccionar"><br></p>
+                <p>
+                {{ form.publicoCrear() }} {{ form.publicoCrear.label }} 
+                {{ form.privadoCrear() }} {{ form.privadoCrear.label }}
+                </p>
                 <p>{{ form.crear() }}</p>
                 <p><a href="/gestorimagennew/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
             </form><br>

@@ -8,13 +8,13 @@
         <title>Red Social de Imágenes</title>
         {% endif %}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
-        <script src="{{ url_for('static', filename='js/autenticarInicio.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/autenticar.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/eliminar.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/autenticarInicio.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/crear.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/actualizar.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/descargar.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/autenticarInicioNew.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/cambioContraseñaNew.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/autenticarNew.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/eliminarNew.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/crearNew.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/actualizarNew.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/descargasNew.js') }}"></script>
     </head>
     <body link="#ff0000" alink="#ffffff" vlink="#4c2c96">
         <div id="cabecera">. Atajos: 
@@ -34,9 +34,7 @@
         {% endwith %}
         {% block contenido %}
         <!-- Contenido cargar (renderizar) -->
-        
         {% endblock %}
-
         <footer >
             <div id="piedepagina">
                 <h5>© Todos los derechos reservados. Sitio desarrollado con el framework de Flask</h5>

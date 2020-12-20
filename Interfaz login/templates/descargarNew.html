@@ -5,11 +5,11 @@
         <h1 class="titulo">Descargar Imágenes</h1>
         <div id="display"><br>
             <img src="{{ url_for('static', filename='images/descargar.png') }}" alt="Usuario" height="90" witdh="90">
-            <form action="" method="POST" onsubmit="return descargarImagen();">
+            <form action="" method="POST" onsubmit="return descargarImagen();" novalidate>
                 {{ form.hidden_tag() }}
                 <p>
-                {{ form.nombreimagen4.label }}<br>
-                {{ form.nombreimagen4(size=30)}}<br>
+                {{ form.nomImgDescgar.label }}<br>
+                {{ form.nomImgDescgar(size=30)}}<br>
                 </p>
                 <p>{{ form.descargar() }}</p>
                 <p><a href="/gestorimagennew/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
