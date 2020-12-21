@@ -34,11 +34,11 @@ def login():
             usuario = request.form['usuario']
             clave = request.form['clave']
             email = request.form['email']
-            if utils.isEmailValid(email):         
-                if utils.isUsernameValid(usuario):            
+            if utils.isEmailValid(email):
+                if utils.isUsernameValid(usuario):
                     yag = yagmail.SMTP('cdvitola@uninorte.edu.co','Jesuischriss_25')
                     yag.send(to=email,subject='Validar cuenta',
-                    contents='Revisa tu correo para activar tu cuenta.') 
+                    contents='Revisa tu correo para activar tu cuenta.')
                     return "Correo enviado a:  " + email
                 else:
                     return "Usuario no valido.  " + usuario
@@ -92,7 +92,7 @@ def recuperarnew():
             Te hemos enviado un enlace para que puedas restablecer tu contraseña.
 
             https://www.avenidasiemprevivacalle123.com.co
-            
+
             Que tengas un resto de dia muy agradable.
 
             Atentamente,
