@@ -1,0 +1,22 @@
+{% extends 'plantilla.html' %}
+{% block contenido %}
+
+<h1>Contáctenos</h1>
+  <form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.remitente.label }}<br>
+      {{ form.remitente(size=30)}}<br>
+    </p>
+    <p>
+      {{ form.correoRte.label }}<br>
+      {{ form.correoRte(size=30) }}<br>
+    </p>
+    <p>
+      {{ form.mensaje.label }}<br>
+      {{ form.mensaje(cols=50, rows=15)}}<br>
+    </p>
+      <p>{{ form.enviar() }}</p>
+  </form>
+
+{% endblock %}

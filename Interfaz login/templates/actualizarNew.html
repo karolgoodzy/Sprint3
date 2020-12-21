@@ -5,7 +5,7 @@
         <h1 class="titulo">Actualizar Imágenes</h1>
         <div id="display">
             <img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="actualizar" height="90" witdh="90">
-            <form action="" method="POST" onsubmit="return actualizarImagen();" novalidate>
+            <form action="{{ url_for('imagenSubidaAct')}}" method="POST" onsubmit="return actualizarImagen();" enctype="multipart/form-data" novalidate>
                 {{ form.hidden_tag() }}
                 <p>
                 {{ form.nomImgActlzar.label }}<br>
@@ -15,7 +15,7 @@
                 {{ form.nuevoNombre.label }}<br>
                 {{ form.nuevoNombre(size=30)}}<br>
                 </p>
-                <p><input type="file" name="archivo" id="seleccionar"><br></p>
+                <p>{{ form.actlzarArchivo() }}</p>
                 <p>
                 {{ form.publicoActlzar() }} {{ form.publicoActlzar.label }} 
                 {{ form.privadoActlzar() }} {{ form.privadoActlzar.label }}

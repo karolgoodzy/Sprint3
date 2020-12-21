@@ -1,0 +1,12 @@
+{% extends "plantilla.html" %}
+{% block contenido %}
+  <div id="fondo">
+    <center>
+      <h1 class="titulo">Imagen subida y actualizada!</h1>
+      {% if path %}
+          <p> Archivo actualizado en: {{path}} </p>
+          <img src="{{ path }}" alt="{{ nombrearchivo }}" height="150" witdh="150">
+      {% endif %}
+    </center>
+  </div>
+{% endblock %}
