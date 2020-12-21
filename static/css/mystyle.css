@@ -1,0 +1,49 @@
+#display {
+    width: 500px;
+    border-radius: 25px;
+    background-color: #3a92bb;
+}
+#fondo {
+    height: 700px;
+    background: linear-gradient(320deg, #332f73 0%, #253ca8 35%, #358fb6 100%);
+}
+#cabecera {
+    width: 350px;
+    color: #ffffff;
+    border-radius: 15px;
+    background-color: #478cac;
+}
+#piedepagina {text-align: center;
+    color: #ffffff;
+    border-radius: 15px;
+    background-color: #202020;
+}
+body {font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      height:800px;
+      /*background-color: #7c9aad;*/
+      /* background-image: linear-gradient(0deg,#0d235e 0%, #3b5aaf 35%, rgb(99, 145, 182) 100%); */
+      background:#29343b;
+}
+form {font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      color: #0b174d;
+}
+.boton {text-align: center;
+        min-width: 150px;
+        color: rgb(90, 196, 196);
+        background-color: rgb(41, 94, 94);
+}
+.titulo {text-align: center;
+         font-size: 30pt;
+         color: #377ba8;
+         background-color: lightblue;
+}
+.contenedor-producto{
+    width:450px;
+    height:300px;
+    margin:auto;		
+}
+.imagen-principal{
+    width:100%;
+    height:300px;
+    border:1px solid #0c0c0c;
+}

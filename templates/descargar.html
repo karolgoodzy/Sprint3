@@ -1,0 +1,20 @@
+{% extends "plantilla.html" %}
+{% block contenido %}
+<div id="fondo">
+    <center>
+        <h1 class="titulo">Descargar Imágenes</h1>
+        <div id="display"><br>
+            <img src="{{ url_for('static', filename='images/descargar.png') }}" alt="Usuario" height="90" witdh="90">
+            <form action="" method="POST" onsubmit="return descargarImagen();" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                {{ form.nomImgDescgar.label }}<br>
+                {{ form.nomImgDescgar(size=30)}}<br>
+                </p>
+                <p>{{ form.descargar() }}</p>
+                <p><a href="/gestor/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
+            </form><br>
+        </div>
+    </center>
+</div>
+{% endblock %}

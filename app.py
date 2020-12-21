@@ -1,64 +1,214 @@
-from flask import Flask, render_template, request
+import functools
+import os # Para generar la llave aleatoria
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from formularios import FormSesion, FormRegistro, FormRecuperar, FormCrear, FormActualizar, FormEliminar, FormDescargar, FormContact
 import yagmail
 import utils
+from werkzeug.utils import secure_filename # para obtener el nombre del archivo de forma segura.
+
 app = Flask(__name__)
 
-@app.route('/')
-def inicio():
-    return render_template('index.html')
+# Codigo para crear token de seguridad y crear carpeta de imagenes
+FOLDER_CARGA = os.path.abspath("static/resources") # carpeta donde se cargarán las imágenes.
+SECRET_KEY = os.urandom(32) # Para generar la llave aleatoria
+app.config['SECRET_KEY'] = SECRET_KEY
+app.config["FOLDER_CARGA"] = FOLDER_CARGA
 
-@app.route('/registro/')
-def registro():
-    return render_template('registro.html')
 
+####################################
+# Reparar pagina para buscar imagenes
 @app.route('/busquedaimagenes/')
 def busqueda():
     return render_template('busquedaImagenes.html')
+####################################
 
+
+#############################################################
+# Reparar para enviar correos electronicos con yagmail ######
+@app.route('/login/', methods=['GET','POST'])
+def login():
+    try:
+        if request.method == 'POST':
+            usuario = request.form['usuario']
+            clave = request.form['clave']
+            email = request.form['email']
+            if utils.isEmailValid(email):
+                if utils.isUsernameValid(usuario):
+                    yag = yagmail.SMTP('cdvitola@uninorte.edu.co','Jesuischriss_25')
+                    yag.send(to=email,subject='Validar cuenta',
+                    contents='Revisa tu correo para activar tu cuenta.')
+                    return "Correo enviado a:  " + email
+                else:
+                    return "Usuario no valido.  " + usuario
+            else:
+                return "Correo no valido.  " + usuario
+        else:
+            return 'Entra con GET'
+    except:
+        return render_template('registro.html')
+##############################################################
+
+
+# Pagina de Bienvenida
+@app.route('/')
+def Home():
+    return render_template('index.html', titulo='Red Social de Imagenes')
+
+
+# Pagina para iniciar sesión
 @app.route('/sesion/', methods=['GET','POST'])
 def sesion():
-    #try:
-      if request.method == 'POST':
-         usuario = request.form['usuario']
-         clave = request.form['contraseña']
-         email = request.form['correo']
-         if utils.isEmailValid(email):
-            if utils.isUsernameValid(usuario):
-               yag = yagmail.SMTP('penarandah@uninorte.edu.co','TuClavePersonal')
-               yag.send(to=email,subject='Validar cuenta',
-               contents='Revisa tu correo para activar tu cuenta.')
-               return "Correo enviado a:  " + email
-            else:
-               return "Usuario no valido.  " + usuario
-         else:
-            return "Correo no valido.  " + usuario
-      else:
-          return render_template('sesion.html')
-    #except:
-       #return render_template('sesion.html')
-
-@app.route('/gestorimagen/')
-def gestor():
-    return render_template('gestorImagen.html')
+    form = FormSesion()
+    if(form.validate_on_submit()):
+        flash('Damos la bienvenida al usuario {}'.format(form.usuarioSesion.data))
+        return redirect(url_for('gestor'))
+    return render_template('sesion.html', titulo='Iniciar Sesión', form=form)
 
 
-@app.route('/sesion/recuperarcontrasena/')
+# Pagina para registar usuario
+@app.route('/registro/', methods=['GET','POST'])
+def registro():
+    form = FormRegistro()
+    if(form.validate_on_submit()):
+        flash('Se ha registrado el usuario {}'.format(form.usuarioRegistro.data))
+        return redirect(url_for('gracias'))
+    return render_template('registro.html', titulo='Registrar Usuario', form=form)
+
+
+# Pagina para recuperar contraseña
+@app.route('/sesion/recuperar/', methods=['GET','POST'])
 def recuperar():
-    return render_template('recuperarcontrasena.html')
+    form = FormRecuperar()
+    if(form.validate_on_submit()):
+        email = form.correoRecuperar.data
+        if utils.isEmailValid(email):
+            yag = yagmail.SMTP('cdvitola@uninorte.edu.co','Jesuischriss_25')
+            yag.send(to=email,subject='Restablecer Contraseña',
+            contents="""
+            Hola, querido usuario:
+
+            Te hemos enviado un enlace para que puedas restablecer tu contraseña.
+
+            https://www.avenidasiemprevivacalle123.com.co
+
+            Que tengas un resto de dia muy agradable.
+
+            Atentamente,
+
+            La Administracion.""")
+            flash('Se ha enviado un enlace de "restablecer contraseña" a tu correo {}'.format(form.correoRecuperar.data))
+            return redirect(url_for('gracias'))
+        else:
+            flash('El correo {} no es valido'.format(form.correoRecuperar.data))
+            return redirect(url_for('recuperar'))
+    return render_template('recuperarClave.html', titulo='Registrar Usuario', form=form)
 
 
-@app.route('/gestorimagen/crear')
+
+
+
+# Pagina del gestor para interactuar con las imagenes
+@app.route('/gestor/')
+def gestor():
+    return render_template('gestorImagen.html', titulo='Gestor de Imagenes')
+
+
+# Pagina para crear imagenes
+@app.route('/gestor/crear/', methods=['GET','POST'])
 def crear():
-    return render_template('crear.html')
+    form = FormCrear()
+    if(form.validate_on_submit()):
+        flash('Se ha creado la imagen {}'.format(form.nomImgCrear.data))
+        return redirect(url_for('imagenSubidaCr'))
+    return render_template('crear.html', titulo='Crear Imagen', form=form)
 
-@app.route('/gestorimagen/actualizar')
+# Pagina para cuando la imagen creada se sube al proyecto
+@app.route('/gestor/crear/imagensubida', methods=('GET', 'POST') )
+#@login_required
+def imagenSubidaCr():
+    path = ''
+    form = FormCrear()
+    if request.method == 'POST':
+        archivo = form.crearArchivo.data
+        filename = secure_filename(archivo.filename) # obtener el nombre del archivo de forma segura.
+        path = os.path.join(app.config["FOLDER_CARGA"], filename) # ruta de la imagen, incluyendola.
+        archivo.save(path)
+        path = os.path.join('static/resources/', filename)
+        flash( 'Imagen guardada con éxito.' )
+        return render_template("imagenSubidaCr.html", nombrearchivo=filename, path=path)
+    return redirect(url_for('crearnew'))
+
+
+# Pagina para actualizar imagenes
+@app.route('/gestor/actualizar/', methods=['GET','POST'])
 def actualizar():
-    return render_template('actualizar.html')
+    form = FormActualizar()
+    if(form.validate_on_submit()):
+        flash('Se ha actualizado la imagen {} a {}'.format(form.nomImgActulzar.data, form.nuevoNombre.data))
+        return redirect(url_for('imagenSubidaAct'))
+    return render_template('actualizar.html', titulo='Actualizar Imagen', form=form)
 
-@app.route('/gestorimagen/eliminar/')
+# Pagina para cuando la imagen actualizada se sube al proyecto
+@app.route('/gestor/actualizar/imagensubida', methods=('GET', 'POST') )
+#@login_required
+def imagenSubidaAct():
+    path = ''
+    form = FormActualizar()
+    if request.method == 'POST':
+        archivo = form.actulzarArchivo.data
+        filename = secure_filename(archivo.filename) # obtener el nombre del archivo de forma segura.
+        path = os.path.join(app.config["FOLDER_CARGA"], filename) # ruta de la imagen, incluyendola.
+        archivo.save(path)
+        path = os.path.join('static/resources/', filename)
+        flash( 'Imagen actualizada con éxito.' )
+        return render_template("imagenSubidaAct.html", nombrearchivo=filename, path=path)
+    return redirect(url_for('actualizar'))
+
+
+# Pagina para eliminar imagenes
+@app.route('/gestor/eliminar/', methods=['GET','POST'])
 def eliminar():
-    return render_template('eliminar.html')
+    form = FormEliminar()
+    if(form.validate_on_submit()):
+        flash('Se ha eliminado la imagen {}'.format(form.nomImgElimnar.data))
+        return redirect(url_for('gracias'))
+    return render_template('eliminar.html', titulo='Eliminar Imagen', form=form)
 
-@app.route('/gestorimagen/descargar/')
+
+# Pagina para descargar imagenes
+@app.route('/gestor/descargar/', methods=['GET','POST'])
 def descargar():
-    return render_template('descargar.html')
+    form = FormDescargar()
+    if(form.validate_on_submit()):
+        flash('Se ha descargado la imagen {}'.format(form.nomImgDescgar.data))
+        return redirect(url_for('gracias'))
+    return render_template('descargar.html', titulo='Descargar Imagen', form=form)
+
+
+
+
+
+# Pagina de contacto
+@app.route('/contactenos/', methods=['GET','POST'])
+def contactenos():
+    form = FormContact()
+    if(form.validate_on_submit()):
+        flash('Contáctenos solicitado por Nombre: {}, Correo: {}'.format(form.remitente.data, form.correoRte.data))
+        return redirect(url_for('gracias'))
+    return render_template('contactenos.html', titulo='Contáctenos', form=form)
+
+# Pagina de agradecimiento
+@app.route('/gracias/')
+def gracias():
+    return render_template('gracias.html')
+
+# Transicion para cerrar sesion
+@app.route('/logout/')
+def logout():
+    return redirect( url_for( 'Home' ) )
+
+# Variables desconocidas y necesarias. No tocar
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)

@@ -1,0 +1,17 @@
+{% extends "plantilla.html" %}
+{% block contenido %}
+<div id="fondo">
+    <center>
+        <h1 class="titulo">Red Social de Imágenes</h1>
+        <a href="/sesion/"><input type="submit" class="boton" name="ventanaIniciar" value="Iniciar Sesión"/></a>
+        <a href="/registro/"><input type="submit" class="boton" name="ventanaRegistar" value="Registrar Usuario"/></a>
+      
+        <br><br><br>
+        <img src="{{ url_for('static', filename='images/images1.jpg') }}" alt="Usuario" height="100" witdh="140">
+        <img src="{{ url_for('static', filename='images/images2.jpg') }}" alt="Usuario" height="100" witdh="140">
+        <img src="{{ url_for('static', filename='images/images3.jpg') }}" alt="Usuario" height="100" witdh="140">
+        <img src="{{ url_for('static', filename='images/images4.jpg') }}" alt="Usuario" height="100" witdh="140">
+
+    </center>
+</div>
+{% endblock %}

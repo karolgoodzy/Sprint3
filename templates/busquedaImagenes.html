@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Grupo B">
+    <style>
+		*{box-sizing:border-box;}
+		div{
+			float:center;
+		}
+    </style>
+    <title> Buscar Imágenes </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
+    <script s>
+        var nuevaimg = ["galeria/images 1.jpg"];
+        var imagenPrincipal = document.querySelectorAll(".imagen-principal")[0];
+        imagenPrincipal.style.backgroundImage =nuevaimg[0];
+    </script>
+</head>
+<body>
+    <center>
+        <h1 class="titulo">Buscar Imágenes</h1>
+        <div id="display"><br>
+            <form>
+                <table border="0">
+                <img src="{{ url_for('static', filename='images/busqueda.png') }}" alt="Usuario" height="90" witdh="90">
+                    <tr>
+                        <td>Palabra clave: </td>
+                        <td><input type="text" name="nameImage" id="nameImage" placeholder="palabras que contenga"/></td>
+                    </tr>
+                </table><br>
+                <input type="text" class="boton" name="iniciar" value="Mostrar Imagen"/>
+                <a href="/gestorimagen/"><input type="" class="boton" name="cancelar" value="cancelar"/></a>
+            </form><br>
+        </div><br><br>
+        <div class="contenedor-producto">
+            <div class="imagen-principal">
+                <!-- imagen encontrada -->
+            </div>
+        </div>
+    </center>
+</body>
+</html>

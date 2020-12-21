@@ -1,0 +1,51 @@
+<!--    pagina en reparacion   -->
+<!Doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}{% endblock %} Mensajería</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}">
+<script src="{{ url_for('static', filename='js/iniciar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/cambioClave.js') }}"></script>
+<script src="{{ url_for('static', filename='js/registrar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/eliminar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/crear.js') }}"></script>
+<script src="{{ url_for('static', filename='js/actualizar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/descargar.js') }}"></script>
+</head>
+<body>
+<nav link="#ff0000" alink="#ffffff" vlink="#4c2c96">
+  <h1>Mensajería</h1>
+  <ul>
+    {% if g.user %}
+      <li><a class="action" href="{{ url_for('downloadpdf') }}">Descargar doc pdf</a>
+      <li><a class="action" href="{{ url_for('downloadimage') }}">Descargar imagen</a>
+      <li><a href="{{ url_for('gestorimagen') }}">Gestor de Imagen</a>
+      <li><a href="{{ url_for('logout') }}">Cerrar Sesión</a>
+    {% else %}
+      <li><a href="{{ url_for('registronew') }}">Registrarse</a>
+      <li><a href="{{ url_for('sesionnew') }}">Iniciar Sesión</a>
+    {% endif %}
+    <li><a href="{{ url_for('contact') }}">Contáctenos</a>    
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+<footer font-size:"12pt">
+  <div id="piedepagina">
+    <p>© Todos los derechos reservados. Sitio desarrollado con el framework de Flask</p>
+    <img src="{{ url_for('static', filename='images/facebook.png') }}" alt="facebook" height="20">
+    <img src="{{ url_for('static', filename='images/twitter.png') }}" alt="twitter" height="20">
+    <img src="{{ url_for('static', filename='images/instagram.png') }}" alt="instagram" height="20">
+  </div>
+</footer>
+</body>
+</html>
