@@ -5,13 +5,16 @@ from wtforms import StringField
 from formularios import FormSesion, FormRegistro, FormRecuperar, FormCrear, FormActualizar, FormEliminar, FormDescargar
 import yagmail
 import utils
+from appdb import *
 
 app = Flask(__name__)
 
 SECRET_KEY = os.urandom(32) # Para generar la llave aleatoria
 app.config['SECRET_KEY'] = SECRET_KEY
 
-@app.route('/indexx')
+sql_insert_usuarios(20131215,'pruebanombre','pruebaapellido','pruebausuario','pruebacorreo','pruebaclave')
+
+@app.route('/index')
 def inicio():
     return render_template('index.html')
 
@@ -79,11 +82,11 @@ def login():
             usuario = request.form['usuario']
             clave = request.form['clave']
             email = request.form['email']
-            if utils.isEmailValid(email):         
-                if utils.isUsernameValid(usuario):            
+            if utils.isEmailValid(email):
+                if utils.isUsernameValid(usuario):
                     yag = yagmail.SMTP('cdvitola@uninorte.edu.co','Jesuischriss_25')
                     yag.send(to=email,subject='Validar cuenta',
-                    contents='Revisa tu correo para activar tu cuenta.') 
+                    contents='Revisa tu correo para activar tu cuenta.')
                     return "Correo enviado a:  " + email
                 else:
                     return "Usuario no valido.  " + usuario
@@ -162,5 +165,5 @@ def descargarnew():
 def gracias():
     return render_template('gracias.html')
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+#if __name__ == '__main__':
+#    app.run(debug=True, port=5000)
