@@ -3,7 +3,7 @@
 <div id="fondo">
     <center>
         <h1 class="titulo">Actualizar Imágenes</h1>
-        <div id="display">
+        <div id="display"><br>
             <img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="actualizar" height="90" witdh="90">
             <form action="{{ url_for('imagenSubidaAct')}}" method="POST" onsubmit="return actualizarImagen();" enctype="multipart/form-data" novalidate>
                 {{ form.hidden_tag() }}
