@@ -82,8 +82,27 @@ def registronew():
 def recuperarnew():
     form = FormRecuperar()
     if(form.validate_on_submit()):
-        flash('Se ha enviado el enlace al correo {}'.format(form.correoRecuperar.data))
-        return redirect(url_for('gracias'))
+        email = form.correoRecuperar.data
+        if utils.isEmailValid(email):
+            yag = yagmail.SMTP('cdvitola@uninorte.edu.co','Jesuischriss_25')
+            yag.send(to=email,subject='Restablecer Contraseña',
+            contents="""
+            Hola, querido usuario:
+
+            Te hemos enviado un enlace para que puedas restablecer tu contraseña.
+
+            https://www.avenidasiemprevivacalle123.com.co
+            
+            Que tengas un resto de dia muy agradable.
+
+            Atentamente,
+
+            La Administracion.""")
+            flash('Se ha enviado un enlace de "restablecer contraseña" a tu correo {}'.format(form.correoRecuperar.data))
+            return redirect(url_for('gracias'))
+        else:
+            flash('El correo {} no es valido'.format(form.correoRecuperar.data))
+            return redirect(url_for('recuperarnew'))
     return render_template('recuperarcontrasenaNew.html', titulo='Registrar Usuario', form=form)
 
 
