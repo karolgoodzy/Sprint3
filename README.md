@@ -7,7 +7,12 @@ y Python con el modulo de Flask para la parte de BackEnd. Ademas de la integraci
 de base de datos, en donde almacenaremos la informacion de los usuarios.
 
 
+
 Staff:
+
 -Karol Armando Gómez Ríos
+
 -Andres Felipe Rojas Sandoval
+
 -Cristian David Vitola Angulo
+
