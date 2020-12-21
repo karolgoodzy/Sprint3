@@ -8,20 +8,20 @@
             <form action="{{ url_for('imagenSubidaAct')}}" method="POST" onsubmit="return actualizarImagen();" enctype="multipart/form-data" novalidate>
                 {{ form.hidden_tag() }}
                 <p>
-                {{ form.nomImgActlzar.label }}<br>
-                {{ form.nomImgActlzar(size=30)}}<br>
+                {{ form.nomImgActulzar.label }}<br>
+                {{ form.nomImgActulzar(size=30)}}<br>
                 </p>
                 <p>
                 {{ form.nuevoNombre.label }}<br>
                 {{ form.nuevoNombre(size=30)}}<br>
                 </p>
-                <p>{{ form.actlzarArchivo() }}</p>
+                <p>{{ form.actulzarArchivo() }}</p>
                 <p>
                 {{ form.publicoActlzar() }} {{ form.publicoActlzar.label }} 
                 {{ form.privadoActlzar() }} {{ form.privadoActlzar.label }}
                 </p>
                 <p>{{ form.actualizar() }}</p>
-                <p><a href="/gestorimagennew/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
+                <p><a href="/gestor/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
             </form><br>
         </div>
     </center>

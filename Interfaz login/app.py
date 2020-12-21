@@ -54,32 +54,32 @@ def login():
 # Pagina de Bienvenida
 @app.route('/')
 def Home():
-    return render_template('indexNew.html', titulo='Red Social de Imagenes')
+    return render_template('index.html', titulo='Red Social de Imagenes')
 
 
 # Pagina para iniciar sesión
-@app.route('/sesionnew/', methods=['GET','POST'])
-def sesionnew():
+@app.route('/sesion/', methods=['GET','POST'])
+def sesion():
     form = FormSesion()
     if(form.validate_on_submit()):
         flash('Damos la bienvenida al usuario {}'.format(form.usuarioSesion.data))
-        return redirect(url_for('gestornew'))
-    return render_template('sesionnew.html', titulo='Iniciar Sesión', form=form)
+        return redirect(url_for('gestor'))
+    return render_template('sesion.html', titulo='Iniciar Sesión', form=form)
 
 
 # Pagina para registar usuario
-@app.route('/registronew/', methods=['GET','POST'])
-def registronew():
+@app.route('/registro/', methods=['GET','POST'])
+def registro():
     form = FormRegistro()
     if(form.validate_on_submit()):
         flash('Se ha registrado el usuario {}'.format(form.usuarioRegistro.data))
         return redirect(url_for('gracias'))
-    return render_template('registroNew.html', titulo='Registrar Usuario', form=form)
+    return render_template('registro.html', titulo='Registrar Usuario', form=form)
 
 
 # Pagina para recuperar contraseña
-@app.route('/sesionnew/recuperar/', methods=['GET','POST'])
-def recuperarnew():
+@app.route('/sesion/recuperar/', methods=['GET','POST'])
+def recuperar():
     form = FormRecuperar()
     if(form.validate_on_submit()):
         email = form.correoRecuperar.data
@@ -102,30 +102,30 @@ def recuperarnew():
             return redirect(url_for('gracias'))
         else:
             flash('El correo {} no es valido'.format(form.correoRecuperar.data))
-            return redirect(url_for('recuperarnew'))
-    return render_template('recuperarcontrasenaNew.html', titulo='Registrar Usuario', form=form)
+            return redirect(url_for('recuperar'))
+    return render_template('recuperarClave.html', titulo='Registrar Usuario', form=form)
 
 
 
 
 
 # Pagina del gestor para interactuar con las imagenes
-@app.route('/gestorimagennew/')
-def gestornew():
-    return render_template('gestorImagenNew.html', titulo='Gestor de Imagenes')
+@app.route('/gestor/')
+def gestor():
+    return render_template('gestorImagen.html', titulo='Gestor de Imagenes')
 
 
 # Pagina para crear imagenes
-@app.route('/gestorimagennew/crearnew/', methods=['GET','POST'])
-def crearnew():
+@app.route('/gestor/crear/', methods=['GET','POST'])
+def crear():
     form = FormCrear()
     if(form.validate_on_submit()):
         flash('Se ha creado la imagen {}'.format(form.nomImgCrear.data))
         return redirect(url_for('imagenSubidaCr'))
-    return render_template('crearNew.html', titulo='Crear Imagen', form=form)
+    return render_template('crear.html', titulo='Crear Imagen', form=form)
 
 # Pagina para cuando la imagen creada se sube al proyecto
-@app.route('/gestorimagennew/crearnew/imagensubida', methods=('GET', 'POST') )
+@app.route('/gestor/crear/imagensubida', methods=('GET', 'POST') )
 #@login_required
 def imagenSubidaCr():
     path = ''
@@ -137,54 +137,54 @@ def imagenSubidaCr():
         archivo.save(path)
         path = os.path.join('static/resources/', filename)
         flash( 'Imagen guardada con éxito.' )
-        return render_template("imgCrearSubida.html", nombrearchivo=filename, path=path)
+        return render_template("imagenSubidaCr.html", nombrearchivo=filename, path=path)
     return redirect(url_for('crearnew'))
 
 
 # Pagina para actualizar imagenes
-@app.route('/gestorimagennew/actualizarnew/', methods=['GET','POST'])
-def actualizarnew():
+@app.route('/gestor/actualizar/', methods=['GET','POST'])
+def actualizar():
     form = FormActualizar()
     if(form.validate_on_submit()):
-        flash('Se ha actualizado la imagen {} a {}'.format(form.nomImgActlzar.data, form.nuevoNombre.data))
+        flash('Se ha actualizado la imagen {} a {}'.format(form.nomImgActulzar.data, form.nuevoNombre.data))
         return redirect(url_for('imagenSubidaAct'))
-    return render_template('actualizarnew.html', titulo='Actualizar Imagen', form=form)
+    return render_template('actualizar.html', titulo='Actualizar Imagen', form=form)
 
 # Pagina para cuando la imagen actualizada se sube al proyecto
-@app.route('/gestorimagennew/actualizarnew/imagensubida', methods=('GET', 'POST') )
+@app.route('/gestor/actualizar/imagensubida', methods=('GET', 'POST') )
 #@login_required
 def imagenSubidaAct():
     path = ''
     form = FormActualizar()
     if request.method == 'POST':
-        archivo = form.actlzarArchivo.data
+        archivo = form.actulzarArchivo.data
         filename = secure_filename(archivo.filename) # obtener el nombre del archivo de forma segura.
         path = os.path.join(app.config["FOLDER_CARGA"], filename) # ruta de la imagen, incluyendola.
         archivo.save(path)
         path = os.path.join('static/resources/', filename)
-        flash( 'Imagen guardada con éxito.' )
-        return render_template("imgActlzarSubida.html", nombrearchivo=filename, path=path)
-    return redirect(url_for('actualizarnew'))
+        flash( 'Imagen actualizada con éxito.' )
+        return render_template("imagenSubidaAct.html", nombrearchivo=filename, path=path)
+    return redirect(url_for('actualizar'))
 
 
 # Pagina para eliminar imagenes
-@app.route('/gestorimagennew/eliminarnew/', methods=['GET','POST'])
-def eliminarnew():
+@app.route('/gestor/eliminar/', methods=['GET','POST'])
+def eliminar():
     form = FormEliminar()
     if(form.validate_on_submit()):
         flash('Se ha eliminado la imagen {}'.format(form.nomImgElimnar.data))
         return redirect(url_for('gracias'))
-    return render_template('eliminarNew.html', titulo='Eliminar Imagen', form=form)
+    return render_template('eliminar.html', titulo='Eliminar Imagen', form=form)
 
 
 # Pagina para descargar imagenes
-@app.route('/gestorimagennew/descargarnew/', methods=['GET','POST'])
-def descargarnew():
+@app.route('/gestor/descargar/', methods=['GET','POST'])
+def descargar():
     form = FormDescargar()
     if(form.validate_on_submit()):
         flash('Se ha descargado la imagen {}'.format(form.nomImgDescgar.data))
         return redirect(url_for('gracias'))
-    return render_template('descargarNew.html', titulo='Descargar Imagen', form=form)
+    return render_template('descargar.html', titulo='Descargar Imagen', form=form)
 
 
 

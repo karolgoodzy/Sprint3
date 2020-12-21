@@ -35,11 +35,11 @@ class FormCrear(FlaskForm):
 
 
 class FormActualizar(FlaskForm):
-    nomImgActlzar = StringField('Nombre de la imagen', validators=[DataRequired(message='No dejar vacio, completar')])
+    nomImgActulzar = StringField('Nombre de la imagen', validators=[DataRequired(message='No dejar vacio, completar')])
     nuevoNombre = StringField('Nuevo nombre', validators=[DataRequired(message='No dejar vacio, completar')])
     publicoActlzar = BooleanField('Publica')
     privadoActlzar = BooleanField('Privada')
-    actlzarArchivo = FileField('Seleccionar archivo')
+    actulzarArchivo = FileField('Seleccionar archivo')
     actualizar = SubmitField('Actualizar')
 
 

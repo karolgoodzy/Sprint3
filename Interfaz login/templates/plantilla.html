@@ -8,19 +8,19 @@
         <title>Red Social de Imágenes</title>
         {% endif %}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}" type="text/css">
-        <script src="{{ url_for('static', filename='js/autenticarInicioNew.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/cambioContraseñaNew.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/autenticarNew.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/eliminarNew.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/crearNew.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/actualizarNew.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/descargasNew.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/iniciar.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/cambioClave.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/registrar.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/eliminar.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/crear.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/actualizar.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/descargar.js') }}"></script>
     </head>
     <body link="#ff0000" alink="#ffffff" vlink="#4c2c96">
         <div id="cabecera">. Atajos: 
             <a href="/">Home</a>
-            <a href="/sesionnew/">Iniciar Sesion</a>
-            <a href="/registronew/">Registrar Usuario</a>
+            <a href="/sesion/">Iniciar Sesion</a>
+            <a href="/registro/">Registrar Usuario</a>
         </div>
         <hr>
         {% with mensajes = get_flashed_messages() %}
