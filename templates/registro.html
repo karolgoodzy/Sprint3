@@ -5,7 +5,7 @@
             <h1 class="titulo">Registrar Usuario</h1>
             <div id="display"><br>
                 <img src="{{ url_for('static', filename='images/usuario.png') }}" alt="Usuario" height="150" witdh="150"><br>
-                <form action="/registro" method="POST" onsubmit="return verificar();" novalidate>
+                <form action="/registro/" method="POST" onsubmit="return verificar();" novalidate>
                     {{ form.hidden_tag() }}
                     <table border="0">
                     <tr>
