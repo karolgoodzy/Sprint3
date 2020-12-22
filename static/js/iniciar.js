@@ -5,17 +5,11 @@ function verificarInicio(){
     if ((usuario == "") || (usuario.length < 8)){
         alert("Digite su nombre de usuario");
         document.getElementById("usuarioSesion").focus();
-    return false;
+        return false;
     }
         
     if (clave == ""){
         alert("Digite su contraseña");
-        document.getElementById("claveSesion").focus();
-        return false;
-    }
-
-    if (clave.length < 8){
-        alert("La contraseña debe tener mínimo 8 caracteres.");
         document.getElementById("claveSesion").focus();
         return false;
     }

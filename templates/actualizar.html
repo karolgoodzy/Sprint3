@@ -1,29 +1,29 @@
 {% extends "plantilla.html" %}
 {% block contenido %}
-<div id="fondo">
-    <center>
-        <h1 class="titulo">Actualizar Imágenes</h1>
-        <div id="display"><br>
-            <img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="actualizar" height="90" witdh="90">
-            <form action="{{ url_for('imagenSubidaAct')}}" method="POST" onsubmit="return actualizarImagen();" enctype="multipart/form-data" novalidate>
-                {{ form.hidden_tag() }}
-                <p>
-                {{ form.nomImgActulzar.label }}<br>
-                {{ form.nomImgActulzar(size=30)}}<br>
-                </p>
-                <p>
-                {{ form.nuevoNombre.label }}<br>
-                {{ form.nuevoNombre(size=30)}}<br>
-                </p>
-                <p>{{ form.actulzarArchivo() }}</p>
-                <p>
-                {{ form.publicoActlzar() }} {{ form.publicoActlzar.label }} 
-                {{ form.privadoActlzar() }} {{ form.privadoActlzar.label }}
-                </p>
-                <p>{{ form.actualizar() }}</p>
-                <p><a href="/gestor/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
-            </form><br>
-        </div>
-    </center>
-</div>
+    <div id="fondo">
+        <center>
+            <h1 class="titulo">Actualizar Imágenes</h1>
+            <div id="display"><br>
+                <img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="actualizar" height="90" witdh="90">
+                <form action="{{ url_for('imagenSubidaAct')}}" method="POST" onsubmit="return actualizarImagen();" enctype="multipart/form-data" novalidate>
+                    {{ form.hidden_tag() }}
+                    <p>
+                    {{ form.nomImgActulzar.label }}<br>
+                    {{ form.nomImgActulzar(size=30)}}<br>
+                    </p>
+                    <p>
+                    {{ form.nuevoNombre.label }}<br>
+                    {{ form.nuevoNombre(size=30)}}<br>
+                    </p>
+                    <p>{{ form.actulzarArchivo() }}</p>
+                    <p>
+                    {{ form.publicoActlzar() }} {{ form.publicoActlzar.label }} 
+                    {{ form.privadoActlzar() }} {{ form.privadoActlzar.label }}
+                    </p>
+                    <p>{{ form.actualizar() }}</p>
+                    <p><a href="/gestor/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
+                </form><br>
+            </div>
+        </center>
+    </div>
 {% endblock %}

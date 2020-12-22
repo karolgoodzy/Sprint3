@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Grupo B">
         {% if titulo %}
         <title>{{ titulo }}</title>
         {% else %}
@@ -18,9 +20,10 @@
     </head>
     <body link="#ff0000" alink="#ffffff" vlink="#4c2c96">
         <div id="cabecera">. Atajos: 
-            <a href="/">Home</a>
-            <a href="/sesion/">Iniciar Sesion</a>
-            <a href="/registro/">Registrar Usuario</a>
+            <a href="/">Home</a> - 
+            <a href="/sesion/">Iniciar Sesion</a> - 
+            <a href="/registro/">Registrar Usuario</a> - 
+            <a href="/contactenos/">Contactenos</a>
         </div>
         <hr>
         {% with mensajes = get_flashed_messages() %}

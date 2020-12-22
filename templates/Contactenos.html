@@ -3,23 +3,27 @@
 {% endblock %}
 
 {% block contenido %}
-
-<h1>Contáctenos</h1>
-  <form action="" method="POST" novalidate>
-    {{ form.hidden_tag() }}
-    <p>
-      {{ form.remitente.label }}<br>
-      {{ form.remitente(size=30)}}<br>
-    </p>
-    <p>
-      {{ form.correoRte.label }}<br>
-      {{ form.correoRte(size=30) }}<br>
-    </p>
-    <p>
-      {{ form.mensaje.label }}<br>
-      {{ form.mensaje(cols=50, rows=15)}}<br>
-    </p>
-      <p>{{ form.enviar() }}</p>
-  </form>
-
+    <div id="fondo">
+        <center>
+            <h1 class="titulo">Contáctenos</h1>
+            <div id="display"><br>
+                <form action="" method="POST" novalidate>
+                    <p>{{ form.hidden_tag() }}</p>
+                    <p>
+                    {{ form.remitente.label }}<br>
+                    {{ form.remitente(size=30)}}<br>
+                    </p>
+                    <p>
+                    {{ form.correoRte.label }}<br>
+                    {{ form.correoRte(size=30) }}<br>
+                    </p>
+                    <p>
+                    {{ form.mensaje.label }}<br>
+                    {{ form.mensaje(cols=50, rows=15)}}<br>
+                    </p>
+                    <p>{{ form.enviar() }}</p>
+                </form><br>
+            </div>
+        </center>
+    </div>
 {% endblock %}

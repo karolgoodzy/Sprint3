@@ -1,25 +1,25 @@
 {% extends "plantilla.html" %}
 {% block contenido %}
-<div id="fondo">
-    <center>
-        <h1 class="titulo">Crear Imágenes</h1>
-        <div id="display"><br>
-            <img src="{{ url_for('static', filename='images/crear.png') }}" alt="crear" height="90" witdh="90">
-            <form action="{{ url_for('imagenSubidaCr')}}" method="POST" onsubmit="return crearImagen();" enctype="multipart/form-data" novalidate>
-                {{ form.hidden_tag() }}
-                <p>
-                {{ form.nomImgCrear.label }}<br>
-                {{ form.nomImgCrear(size=30)}}<br>
-                </p>
-                <p>{{ form.crearArchivo() }}</p>
-                <p>
-                {{ form.publicoCrear() }} {{ form.publicoCrear.label }} 
-                {{ form.privadoCrear() }} {{ form.privadoCrear.label }}
-                </p>
-                <p>{{ form.crear() }}</p>
-                <p><a href="/gestor/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
-            </form><br>
-        </div>
-    </center>
+    <div id="fondo">
+        <center>
+            <h1 class="titulo">Crear Imágenes</h1>
+            <div id="display"><br>
+                <img src="{{ url_for('static', filename='images/crear.png') }}" alt="crear" height="90" witdh="90">
+                <form action="{{ url_for('imagenSubidaCr')}}" method="POST" onsubmit="return crearImagen();" enctype="multipart/form-data" novalidate>
+                    {{ form.hidden_tag() }}
+                    <p>
+                    {{ form.nomImgCrear.label }}<br>
+                    {{ form.nomImgCrear(size=30)}}<br>
+                    </p>
+                    <p>{{ form.crearArchivo() }}</p>
+                    <p>
+                    {{ form.publicoCrear() }} {{ form.publicoCrear.label }} 
+                    {{ form.privadoCrear() }} {{ form.privadoCrear.label }}
+                    </p>
+                    <p>{{ form.crear() }}</p>
+                    <p><a href="/gestor/"><input type="" class="boton" name="regresar" value="Regresar"/></a></p>
+                </form><br>
+            </div>
+        </center>
 </div>
 {% endblock %}

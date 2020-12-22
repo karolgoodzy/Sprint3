@@ -1,44 +1,64 @@
 {% extends "plantilla.html" %}
 {% block contenido %}
-<div id="fondo">
-    <center>
-        <h1 class="titulo">Registrar Usuario</h1>
-        <div id="display"><br>
-            <img src="{{ url_for('static', filename='images/usuario.png') }}" alt="Usuario" height="150" witdh="150"><br>
-            <form action="" method="POST" onsubmit="return verificar();" novalidate>
-                {{ form.hidden_tag() }}
-                <p>
-                {{ form.nombres.label }}<br>
-                {{ form.nombres(size=30)}}<br>
-                </p>
-                <p>
-                {{ form.apellidos.label }}<br>
-                {{ form.apellidos(size=30)}}<br>
-                </p>
-                <p>
-                {{ form.correoRegistro.label }}<br>
-                {{ form.correoRegistro(size=30)}}<br>
-                </p>
-                <p>
-                {{ form.usuarioRegistro.label }}<br>
-                {{ form.usuarioRegistro(size=30)}}<br>
-                </p>
-                <p>
-                {{ form.claveRegistro.label }}<br>
-                {{ form.claveRegistro(size=30) }}
-                <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20"
-                            onmouseover="mostrarPassword1();" onmouseout="ocultarPassword1();"><br>
-                </p>
-                <p>
-                {{ form.confirme.label }}<br>
-                {{ form.confirme(size=30) }}
-                <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20"
-                            onmouseover="mostrarPassword2();" onmouseout="ocultarPassword2();"><br>
-                </p>
-                <p>{{ form.registrar() }}</p>
-                <p><a href="/"><input type="" class="boton" name="regresar" value="regresar"/></a></p>
-            </form><br>
-        </div>
-    </center>
-</div>
+    <div id="fondo">
+        <center>
+            <h1 class="titulo">Registrar Usuario</h1>
+            <div id="display"><br>
+                <img src="{{ url_for('static', filename='images/usuario.png') }}" alt="Usuario" height="150" witdh="150"><br>
+                <form action="/registro" method="POST" onsubmit="return verificar();" novalidate>
+                    {{ form.hidden_tag() }}
+                    <table border="0">
+                    <tr>
+                        <td>
+                        {{ form.nombres.label }}<br>
+                        {{ form.nombres(size=30)}}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        {{ form.apellidos.label }}<br>
+                        {{ form.apellidos(size=30)}}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        {{ form.correoRegistro.label }}<br>
+                        {{ form.correoRegistro(size=30)}}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        {{ form.usuarioRegistro.label }}<br>
+                        {{ form.usuarioRegistro(size=30)}}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        {{ form.claveRegistro.label }}<br>
+                        {{ form.claveRegistro(size=30) }}
+                        </td>
+                        <td>
+                        <br><img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20"
+                                    onmouseover="mostrarPassword1();" onmouseout="ocultarPassword1();"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        {{ form.confirme.label }}<br>
+                        {{ form.confirme(size=30) }}
+                        </td>
+                        <td>
+                        <br><img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20"
+                                    onmouseover="mostrarPassword2();" onmouseout="ocultarPassword2();"></td>
+                    </tr>
+                    </table>
+                    <p>{{ form.registrar() }}</p>
+                    <p><a href="/"><input type="" class="boton" name="regresar" value="regresar"/></a></p>
+                </form><br>
+            </div>
+        </center>
+    </div>
 {% endblock %}

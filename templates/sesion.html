@@ -1,28 +1,41 @@
 {% extends "plantilla.html" %}
 {% block contenido %}
-<div id="fondo">
-    <center>
-        <h1 class="titulo">Iniciar Sesión</h1>
-        <div id="display"><br>
-            <img src="{{ url_for('static', filename='images/Login.png') }}" alt="Usuario" height="150" witdh="150"><br>
-            <form action="" method="POST" onsubmit="return verificarInicio();" novalidate>
-                {{ form.hidden_tag() }}
-                <p>
-                {{ form.usuarioSesion.label }}<br>
-                {{ form.usuarioSesion(size=30)}}<br>
-                </p>
-                <p>
-                {{ form.claveSesion.label }}<br>
-                {{ form.claveSesion(size=30) }}
-                <img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20"
-                            onmouseover="mostrarPassword();" onmouseout="ocultarPassword();"><br>
-                </p>
-                <p><a href="recuperar">¿Olvidaste la Contraseña?</a></p>
-                <p>{{ form.recordar() }} {{ form.recordar.label }}</p>
-                <p>{{ form.iniciar() }}</p>
-                <p><a href="/"><input type="" class="boton" name="regresar" value="regresar"/></a></p>
-            </form><br>
-        </div>
-    </center>
-</div>
+    <div id="fondo">
+        <center>
+            <h1 class="titulo">Iniciar Sesión</h1>
+            <div id="display"><br>
+                <img src="{{ url_for('static', filename='images/Login.png') }}" alt="Usuario" height="150" witdh="150"><br>
+                <form action="/sesion" method="POST" novalidate>
+                    {{ form.hidden_tag() }}                    
+                    <table border="0">
+                    <tr>
+                        <td>Palabra clave:
+                        {{ form.usuarioSesion.label }}<br>
+                        {{ form.usuarioSesion(size=30)}}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Palabra clave:
+                        {{ form.claveSesion.label }}<br>
+                        {{ form.claveSesion(size=30) }}
+                        </td>
+                        <td>
+                        <br><img src="{{ url_for('static', filename='images/show_pwd.PNG') }}" alt="Ojito" width="20"
+                                onmouseover="mostrarPassword();" onmouseout="ocultarPassword();"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <p><a href="recuperar">¿Olvidaste la Contraseña?</a></p>
+                        {{ form.recordar() }} {{ form.recordar.label }}
+                        </td>
+                        <td></td>
+                    </tr>
+                    </table>
+                    <p>{{ form.iniciar(onclick="return verificarInicio();") }}</p>
+                    <p><a href="/"><input type="" class="boton" name="regresar" value="regresar"/></a></p>
+                </form><br>
+            </div>
+        </center>
+    </div>
 {% endblock %}

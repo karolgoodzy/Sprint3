@@ -3,7 +3,8 @@ import os # Para generar la llave aleatoria
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from formularios import FormSesion, FormRegistro, FormRecuperar, FormCrear, FormActualizar, FormEliminar, FormDescargar, FormContact
+from formularios import FormSesion, FormRegistro, FormRecuperar, FormCrear, FormActualizar, FormEliminar, FormDescargar, FormBuscar, FormContact
+from db import get_db, close_db
 import yagmail
 import utils
 from werkzeug.utils import secure_filename # para obtener el nombre del archivo de forma segura.
@@ -15,40 +16,6 @@ FOLDER_CARGA = os.path.abspath("static/resources") # carpeta donde se cargarán 
 SECRET_KEY = os.urandom(32) # Para generar la llave aleatoria
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config["FOLDER_CARGA"] = FOLDER_CARGA
-
-
-####################################
-# Reparar pagina para buscar imagenes
-@app.route('/busquedaimagenes/')
-def busqueda():
-    return render_template('busquedaImagenes.html')
-####################################
-
-
-#############################################################
-# Reparar para enviar correos electronicos con yagmail ######
-@app.route('/login/', methods=['GET','POST'])
-def login():
-    try:
-        if request.method == 'POST':
-            usuario = request.form['usuario']
-            clave = request.form['clave']
-            email = request.form['email']
-            if utils.isEmailValid(email):
-                if utils.isUsernameValid(usuario):
-                    yag = yagmail.SMTP('cdvitola@uninorte.edu.co','Jesuischriss_25')
-                    yag.send(to=email,subject='Validar cuenta',
-                    contents='Revisa tu correo para activar tu cuenta.')
-                    return "Correo enviado a:  " + email
-                else:
-                    return "Usuario no valido.  " + usuario
-            else:
-                return "Correo no valido.  " + usuario
-        else:
-            return 'Entra con GET'
-    except:
-        return render_template('registro.html')
-##############################################################
 
 
 # Pagina de Bienvenida
@@ -91,7 +58,7 @@ def recuperar():
 
             Te hemos enviado un enlace para que puedas restablecer tu contraseña.
 
-            https://www.avenidasiemprevivacalle123.com.co
+            https://www.avenidasiemprevivacallefalsa123.com.co
 
             Que tengas un resto de dia muy agradable.
 
@@ -103,7 +70,7 @@ def recuperar():
         else:
             flash('El correo {} no es valido'.format(form.correoRecuperar.data))
             return redirect(url_for('recuperar'))
-    return render_template('recuperarClave.html', titulo='Registrar Usuario', form=form)
+    return render_template('recuperarClave.html', titulo='Recuperar Clave', form=form)
 
 
 
@@ -187,6 +154,14 @@ def descargar():
     return render_template('descargar.html', titulo='Descargar Imagen', form=form)
 
 
+# Pagina para buscar imagenes
+@app.route('/gestor/buscar/', methods=['GET','POST'])
+def buscar():
+    form = FormBuscar()
+    if(form.validate_on_submit()):
+        flash('Se ha encontrado la imagen {}'.format(form.nomImgBuscar.data))
+        return redirect(url_for('gracias'))
+    return render_template('buscarImagen.html', titulo='Buscar Imagenes', form=form)
 
 
 
