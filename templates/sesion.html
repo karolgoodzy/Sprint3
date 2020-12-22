@@ -5,7 +5,7 @@
             <h1 class="titulo">Iniciar Sesión</h1>
             <div id="display"><br>
                 <img src="{{ url_for('static', filename='images/Login.png') }}" alt="Usuario" height="150" witdh="150"><br>
-                <form action="/sesion" method="POST" novalidate>
+                <form action="/sesion/" method="POST" novalidate>
                     {{ form.hidden_tag() }}                    
                     <table border="0">
                     <tr>
