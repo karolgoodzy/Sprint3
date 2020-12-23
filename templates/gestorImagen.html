@@ -1,24 +1,24 @@
 {% extends "plantilla.html" %}
 {% block contenido %}
-<div id="fondo">
-    <center>
-        <h1 class="titulo">Gestor de Imágenes</h1>
-        <table><br>
-            <tr>
-                <th><img src="{{ url_for('static', filename='images/crear.png') }}" alt="Usuario" height="100" witdh="140"></th>
-                <th><img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="Usuario" height="100" witdh="140"></th>
-                <th><img src="{{ url_for('static', filename='images/borrar.png') }}" alt="Usuario" height="100" witdh="140"></th>
-                <th><img src="{{ url_for('static', filename='images/descargar.png') }}" alt="Usuario" height="100" witdh="140"></th>
-                <th><img src="{{ url_for('static', filename='images/busqueda.png') }}" alt="Usuario" height="100" witdh="140"></th>
-            </tr>
-            <tr>
-                <td><br><a href="crear"><input type="submit" class="boton" name="crear" value="Crear Imagen"/></a></td>
-                <td><br><a href="actualizar"><input type="submit" class="boton" name="Actualizar" value="Actualizar Imagen"/></a></td>
-                <td><br><a href="eliminar"><input type="submit" class="boton" name="eliminar" value="Eliminar Imagen"/></a></td>
-                <td><br><a href="descargar"><input type="submit" class="boton" name="descargar" value="descargar  Imágenes"/></a></td>
-                <td><br><a href="/busquedaimagenes/"><input type="submit" class="boton" name="buscar" value="Buscar Imagen"/></a></td>
-            </tr>
-        </table>
-    </center>
-</div>
+    <div id="fondo">
+        <center>
+            <h1 class="titulo">Gestor de Imágenes</h1>
+            <table><br>
+                <tr>
+                    <th><img src="{{ url_for('static', filename='images/crear.png') }}" alt="Usuario" height="100" witdh="140"></th>
+                    <th><img src="{{ url_for('static', filename='images/actualizar.png') }}" alt="Usuario" height="100" witdh="140"></th>
+                    <th><img src="{{ url_for('static', filename='images/borrar.png') }}" alt="Usuario" height="100" witdh="140"></th>
+                    <th><img src="{{ url_for('static', filename='images/descargar.png') }}" alt="Usuario" height="100" witdh="140"></th>
+                    <th><img src="{{ url_for('static', filename='images/busqueda.png') }}" alt="Usuario" height="100" witdh="140"></th>
+                </tr>
+                <tr>
+                    <td><br><a href="crear"><input type="submit" class="boton" name="crear" value="Crear Imagen"/></a></td>
+                    <td><br><a href="actualizar"><input type="submit" class="boton" name="Actualizar" value="Actualizar Imagen"/></a></td>
+                    <td><br><a href="eliminar"><input type="submit" class="boton" name="eliminar" value="Eliminar Imagen"/></a></td>
+                    <td><br><a href="descargar"><input type="submit" class="boton" name="descargar" value="descargar Imágenes"/></a></td>
+                    <td><br><a href="buscar"><input type="submit" class="boton" name="buscar" value="Buscar Imágenes"/></a></td>
+                </tr>
+            </table>
+        </center>
+    </div>
 {% endblock %}

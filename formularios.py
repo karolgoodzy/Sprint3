@@ -54,6 +54,11 @@ class FormDescargar(FlaskForm):
     descargar = SubmitField('Descargar')
 
 
+class FormBuscar(FlaskForm):
+    nomImgBuscar = StringField('Nombre de la imagen:', validators=[DataRequired(message='No dejar vacio, completar')])
+    buscar = SubmitField('Buscar')
+
+
 class FormContact(FlaskForm):
     remitente = StringField('Nombre', validators=[DataRequired(message='No dejar vacio, completar')])
     correoRte = StringField('Correo Electrónico', validators=[DataRequired(message='No dejar vacio, completar')])

@@ -1,21 +1,21 @@
 {% extends "plantilla.html" %}
 {% block contenido %}
-<div id="fondo">
-    <center>
-        <h1 class="titulo">Recuperar Contraseña</h1>
-        <div id="display"><br>
-            <img src="{{ url_for('static', filename='images/recuperar.png') }}" alt="Usuario" height="90" witdh="90"><br>
-            <form action="" method="POST" onsubmit="return recuperarClave();" novalidate>
-                {{ form.hidden_tag() }}
-                <p>Ingrese su e-mail y se le enviara al correo un enlace junto con los pasos para restablecer la contraseña de su cuenta</p>
-                <p>
-                {{ form.correoRecuperar.label }}<br>
-                {{ form.correoRecuperar(size=30)}}<br>
-                </p>
-                <p>{{ form.recuperar() }}</p>
-                <a href="/sesion/"><input type="" class="boton" name="regresar" value="Regresar"/></a>
-            </form><br>
-        </div>
-    </center>
-</div>
+    <div id="fondo">
+        <center>
+            <h1 class="titulo">Recuperar Contraseña</h1>
+            <div id="display"><br>
+                <img src="{{ url_for('static', filename='images/recuperar.png') }}" alt="Usuario" height="90" witdh="90"><br>
+                <form action="" method="POST" onsubmit="return recuperarClave();" novalidate>
+                    {{ form.hidden_tag() }}
+                    <p>Ingrese su e-mail y se le enviara al correo un enlace junto con los pasos para restablecer la contraseña de su cuenta</p>
+                    <p>
+                    {{ form.correoRecuperar.label }}<br>
+                    {{ form.correoRecuperar(size=30)}}<br>
+                    </p>
+                    <p>{{ form.recuperar() }}</p>
+                    <a href="/sesion/"><input type="" class="boton" name="regresar" value="Regresar"/></a>
+                </form><br>
+            </div>
+        </center>
+    </div>
 {% endblock %}

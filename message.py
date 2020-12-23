@@ -1,0 +1,1 @@
+mensaje = {'usuario':'administrador', 'mensaje':'Bienvenido a la pagina'}
